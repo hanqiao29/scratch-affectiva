@@ -15,32 +15,19 @@ new (function() {
     // affectiva ajax call
     ext.use_affectiva = function() {
 
-        window.addEventListener('load', function()){
-            var script = document.createElement('script');
-            script.type = 'text/javascript';
-            script.src = "https://download.affectiva.com/js/3.2/affdex.js";
-        }
+        // window.addEventListener('load', function()){
+        //     var script = document.createElement('script');
+        //     script.type = 'text/javascript';
+        //     script.src = "https://download.affectiva.com/js/3.2/affdex.js";
+        // }
 
+        $.getScript("https://download.affectiva.com/js/3.2/affdex.js", function(){
+            console.log('insdie get script');
+            var detector = new affdex.PhotoDetector();
+            var test_var = detector.detectExpressions.smile;
+            console.log('TestVar:', test_var);
+        })
 
-        // Make an AJAX call to the affectiva API through using Mashape key
-        $.ajax({
-            url: "https://download.affectiva.com/js/3.2/affdex.js",
-            method: 'get',
-            data: {
-            },
-            success: function(data) {
-                console.log('success', data);
-                // detector = new affdex.PhotoDetector();
-                var type = typeof(data);
-                console.log('data type', type);
-                // var test_var = detector.detectExpressions.smile;
-                // console.log('Test Var: ', test_var);
-
-            },
-            error: function(reason) {
-                console.log('error', reason);
-            }
-        });
     };
 
 
