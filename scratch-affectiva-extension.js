@@ -1,4 +1,4 @@
-/* Extension for deteting sentiment of a simple text */
+/* Extension for detecting sentiment of image using affectiva api */
 
 new (function() {
     var ext = this;
@@ -12,20 +12,12 @@ new (function() {
         return {status: 2, msg: 'Ready'};
     };
 
-    // affectiva ajax call
     ext.use_affectiva = function() {
-
-        // window.addEventListener('load', function()){
-        //     var script = document.createElement('script');
-        //     script.type = 'text/javascript';
-        //     script.src = "https://download.affectiva.com/js/3.2/affdex.js";
-        // }
-
         $.getScript("https://download.affectiva.com/js/3.2/affdex.js", function(){
-            console.log('insdie get script');
+            console.log('insdie getScript');
             var detector = new affdex.PhotoDetector();
             var test_var = detector.detectExpressions.smile;
-            console.log('TestVar:', test_var);
+            console.log('Test Var:', test_var);
         })
 
     };
