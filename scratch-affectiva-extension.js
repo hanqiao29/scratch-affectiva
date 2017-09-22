@@ -20,10 +20,10 @@ new (function() {
             // affdex.js tries to access affdex-worker.js,
             // but the function defined in affdex.js is not getting the correct url
             // so we manually get the script of affdex-worker.js here.
-            $.getScript("https://download.affectiva.com/js/3.2/affdex-worker.js", function(){
-                // trying to hardcode some variables to true
-                detector.isRunning = true;
-                detector.isWorkerInitialized = true;
+            // $.getScript("https://download.affectiva.com/js/3.2/affdex-worker.js", function(){
+            //     // trying to hardcode some variables to true
+            //     detector.isRunning = true;
+            //     detector.isWorkerInitialized = true;
 
                 //Enable detection of all Expressions, Emotions and Emojis classifiers.
                 detector.detectAllEmotions();
@@ -82,7 +82,7 @@ new (function() {
                     if (detector && detector.isRunning) {
                         detector.process(context.getImageData(0, 0, canvas.width, canvas.height), 0);
                     }
-            });
+            // }); second get script
         })
     };
 
